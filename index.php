@@ -4,6 +4,7 @@ require_once __DIR__ . '/Model/Product.php';
 require_once __DIR__ . '/data/db.php';
 
 var_dump($products);
+// var_dump($categories);
 
 ?>
 
