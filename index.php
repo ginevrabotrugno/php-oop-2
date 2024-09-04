@@ -22,84 +22,33 @@ require_once __DIR__ . '/data/db.php';
     
     <div class="container">
         <div class="row">
-        <div class="card">
-                <h3 class="card_title">Nome Prodotto</h3>
-                <p class="prod_description">Descrizione: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae illo voluptate similique deserunt! Aut eveniet consequuntur molestias cum tenetur accusantium modi adipisci nulla nihil, minima fuga dignissimos voluptate libero harum.</p>
-                <span class="price">Prezzo</span>
-                <h4 class="list_title">Categoria</h4>
-                <ul>
-                    <li>List Item</li>
-                    <li>List Item</li>
-                    <li>List Item</li>
-                    <li>List Item</li>
-                </ul>
-                <span>Adatto a...</span>
-            </div>
-            <div class="card">
-                <h3 class="card_title">Nome Prodotto</h3>
-                <p class="prod_description">Descrizione: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae illo voluptate similique deserunt! Aut eveniet consequuntur molestias cum tenetur accusantium modi adipisci nulla nihil, minima fuga dignissimos voluptate libero harum.</p>
-                <span class="price">Prezzo</span>
-                <h4 class="list_title">Categoria</h4>
-                <ul>
-                    <li>List Item</li>
-                    <li>List Item</li>
-                    <li>List Item</li>
-                    <li>List Item</li>
-                </ul>
-                <span>Adatto a...</span>
-            </div>
-            <div class="card">
-                <h3 class="card_title">Nome Prodotto</h3>
-                <p class="prod_description">Descrizione: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae illo voluptate similique deserunt! Aut eveniet consequuntur molestias cum tenetur accusantium modi adipisci nulla nihil, minima fuga dignissimos voluptate libero harum.</p>
-                <span class="price">Prezzo</span>
-                <h4 class="list_title">Categoria</h4>
-                <ul>
-                    <li>List Item</li>
-                    <li>List Item</li>
-                    <li>List Item</li>
-                    <li>List Item</li>
-                </ul>
-                <span>Adatto a...</span>
-            </div>
-            <div class="card">
-                <h3 class="card_title">Nome Prodotto</h3>
-                <p class="prod_description">Descrizione: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae illo voluptate similique deserunt! Aut eveniet consequuntur molestias cum tenetur accusantium modi adipisci nulla nihil, minima fuga dignissimos voluptate libero harum.</p>
-                <span class="price">Prezzo</span>
-                <h4 class="list_title">Categoria</h4>
-                <ul>
-                    <li>List Item</li>
-                    <li>List Item</li>
-                    <li>List Item</li>
-                    <li>List Item</li>
-                </ul>
-                <span>Adatto a...</span>
-            </div>
-            <div class="card">
-                <h3 class="card_title">Nome Prodotto</h3>
-                <p class="prod_description">Descrizione: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae illo voluptate similique deserunt! Aut eveniet consequuntur molestias cum tenetur accusantium modi adipisci nulla nihil, minima fuga dignissimos voluptate libero harum.</p>
-                <span class="price">Prezzo</span>
-                <h4 class="list_title">Categoria</h4>
-                <ul>
-                    <li>List Item</li>
-                    <li>List Item</li>
-                    <li>List Item</li>
-                    <li>List Item</li>
-                </ul>
-                <span>Adatto a...</span>
-            </div>
-            <div class="card">
-                <h3 class="card_title">Nome Prodotto</h3>
-                <p class="prod_description">Descrizione: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae illo voluptate similique deserunt! Aut eveniet consequuntur molestias cum tenetur accusantium modi adipisci nulla nihil, minima fuga dignissimos voluptate libero harum.</p>
-                <span class="price">Prezzo</span>
-                <h4 class="list_title">Categoria</h4>
-                <ul>
-                    <li>List Item</li>
-                    <li>List Item</li>
-                    <li>List Item</li>
-                    <li>List Item</li>
-                </ul>
-                <span>Adatto a...</span>
-            </div>
+            <?php foreach($products as $product): ?>
+                <div class="card">
+                    <h3 class="card_title"><?php echo $product->name ?></h3>
+                    <p class="prod_description">
+                        <strong>Descrizione:</strong> 
+                        <?php echo $product->description ?>
+                    </p>
+                    <span class="price">
+                        €<?php echo number_format($product->price, 2, ',', '.'); ?>
+                    </span>
+                    <h4 class="list_title">Categoria</h4>
+                    <ul>
+                        <?php foreach($product->category as $category): ?>
+                            <li>
+                                <?php echo $category ?>
+                            </li>
+                        <?php endforeach; ?>
+                    </ul>
+                    <?php if ($product instanceof Food): ?>
+                    <p><strong>Tipo di Dieta:</strong> <?php echo $product->dietType; ?></p>
+                    <?php elseif ($product instanceof Toy): ?>
+                    <p><strong>Materiale:</strong> <?php echo $product->material; ?></p>
+                    <?php elseif ($product instanceof Bed): ?>
+                    <p><strong>Dimensioni:</strong> <?php echo $product->size; ?></p>
+                    <?php endif; ?>
+                </div>
+            <?php endforeach; ?>
         </div>
     </div>
     
