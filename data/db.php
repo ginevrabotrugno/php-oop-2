@@ -24,3 +24,10 @@ $products = [
     new Bed("Cuccia Comoda per Cani", "Cuccia comoda per cani", 40.00, $dogCategory, "Medium"),
     new Food("Cibo per Gatti Gourmet", "Cibo gourmet per gatti con ingredienti pregiati", 30.00, $catCategory, "Gourmet")
 ];
+
+try {
+    $newProduct = new Product("", "Cibo per cani di alta qualità", 25.99, $dogCategory);
+    $products[] = $newProduct;
+} catch (Exception $e) {
+    echo 'ERRORE: ' . $e->getMessage();
+}

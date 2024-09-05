@@ -23,6 +23,12 @@ class Product {
 
     // Setter per il nome
     public function setName($_name) {
+
+        // Verificare che il nome non sia vuoto
+        if(empty($_name)){
+            throw new Exception('Il nome del prodotto non può essere vuoto!');
+        }
+
         $this->name = $_name;
     }
 
