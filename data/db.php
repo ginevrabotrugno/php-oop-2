@@ -26,7 +26,7 @@ $products = [
 ];
 
 try {
-    $newProduct = new Product("", "Cibo per cani di alta qualità", 25.99, $dogCategory);
+    $newProduct = new Product("Croccantini Premium", "Cibo per cani di alta qualità", -25.99, $dogCategory);
     $products[] = $newProduct;
 } catch (Exception $e) {
     echo 'ERRORE: ' . $e->getMessage();

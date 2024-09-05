@@ -28,25 +28,32 @@ class Product {
         if(empty($_name)){
             throw new Exception('Il nome del prodotto non può essere vuoto!');
         }
-
+        
         $this->name = $_name;
     }
-
+    
     // Getter e Setter per description
     public function getDescription() {
         return $this->description;
     }
-
+    
     public function setDescription($_description) {
         $this->description = $_description;
     }
-
+    
     // Getter e Setter per price
     public function getPrice() {
         return $this->price;
     }
-
+    
     public function setPrice($_price) {
+        
+        // Verificare che il nome non sia vuoto
+        if ($_price <= 0) {
+            throw new Exception("Il prezzo deve essere un valore positivo.");
+        }
+
+
         $this->price = $_price;
     }
 
