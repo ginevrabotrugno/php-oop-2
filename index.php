@@ -24,28 +24,27 @@ require_once __DIR__ . '/data/db.php';
         <div class="row">
             <?php foreach($products as $product): ?>
                 <div class="card">
-                    <h3 class="card_title"><?php echo $product->name ?></h3>
+                    <h3 class="card_title"><?php echo $product->getName() ?></h3>
                     <p class="prod_description">
                         <strong>Descrizione:</strong> 
-                        <?php echo $product->description ?>
+                        <?php echo $product->getDescription() ?>
                     </p>
                     <span class="price">
-                        €<?php echo number_format($product->price, 2, ',', '.'); ?>
+                        €<?php echo number_format($product->getPrice(), 2, ',', '.'); ?>
                     </span>
                     <h4 class="list_title">Categoria</h4>
                     <ul>
-                        <?php foreach($product->category as $category): ?>
-                            <li>
-                                <?php echo $category ?>
-                            </li>
-                        <?php endforeach; ?>
+                        <li><strong>Nome:</strong> <?php echo $product->getCategory()->getName(); ?></li>
+                        <li><strong>Descrizione:</strong> <?php echo $product->getCategory()->getDescription(); ?></li>
+                        <li><strong>Lunghezza del pelo:</strong> <?php echo $product->getCategory()->getFurLength() ?: 'N/A'; ?></li>
+                        <li><strong>Taglia:</strong> <?php echo $product->getCategory()->getSize() ?: 'N/A'; ?></li>
                     </ul>
                     <?php if ($product instanceof Food): ?>
-                    <p><strong>Tipo di Dieta:</strong> <?php echo $product->dietType; ?></p>
+                    <p><strong>Tipo di Dieta:</strong> <?php echo $product->getDietType(); ?></p>
                     <?php elseif ($product instanceof Toy): ?>
-                    <p><strong>Materiale:</strong> <?php echo $product->material; ?></p>
+                    <p><strong>Materiale:</strong> <?php echo $product->getMaterial(); ?></p>
                     <?php elseif ($product instanceof Bed): ?>
-                    <p><strong>Dimensioni:</strong> <?php echo $product->size; ?></p>
+                    <p><strong>Dimensioni:</strong> <?php echo $product->getSize(); ?></p>
                     <?php endif; ?>
                 </div>
             <?php endforeach; ?>
