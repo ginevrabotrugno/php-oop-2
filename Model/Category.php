@@ -37,6 +37,15 @@ class Category {
     }
 
     public function setFurLength($_furLength){
+
+        // Array delle lugnghezze valide
+        $validLengths = ["Pelo Corto", "Pelo Lungo", "Pelo Medio"];
+
+        // controlla che la lunghezza non sia null e appartenga all'array delle lunghezze valide
+        if ($_furLength !== null && !in_array($_furLength, $validLengths)) {
+            throw new Exception("Lunghezza del pelo non valida!");
+        }
+
         $this->furLength = $_furLength;
     }
 

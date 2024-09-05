@@ -26,8 +26,17 @@ $products = [
 ];
 
 try {
-    $newProduct = new Product("Croccantini Premium", "Cibo per cani di alta qualità", -25.99, $dogCategory);
+    $newProduct = new Product("Croccantini Premium", "Cibo per cani di alta qualità", 25.99, $dogCategory);
     $products[] = $newProduct;
 } catch (Exception $e) {
     echo 'ERRORE: ' . $e->getMessage();
 }
+
+try {
+    $newCategory = new Category("Cani", "Prodotti specifici per cani", "Pelo", "Taglia Media");
+    $categories[] = $newCategory;
+} catch (Exception $e) {
+    echo 'ERRORE: ' . $e->getMessage();
+}
+
+// var_dump($categories);
